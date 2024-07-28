@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
-from PIL import Image, ImageTk
 import subprocess
-import time
 import re
 
 # Predefined password
@@ -18,8 +16,7 @@ def start_virtual_mouse():
         return
 
     if name.lower() == "aditya" and password == PASSWORD:
-        result = messagebox.askquestion("Confirmation",
-                                        "Welcome Sir, do you want to turn on the virtual mouse program?")
+        result = messagebox.askquestion("Confirmation", "Welcome Sir, do you want to turn on the virtual mouse program?")
         if result == 'yes':
             countdown(3)
             subprocess.Popen(['python', 'AI Mousehand gesture.py'])
@@ -65,26 +62,20 @@ root.title("Virtual Mouse Control")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
-# Resize the image to fit the window
-bg_image = Image.open("Image 455.jpg")
-bg_image = bg_image.resize((screen_width, screen_height), Image.ANTIALIAS)
-bg_photo = ImageTk.PhotoImage(bg_image)
-
 # Set window size to screen dimensions
 root.geometry(f"{screen_width}x{screen_height}")
 
-# Background label
-bg_label = tk.Label(root, image=bg_photo)
-bg_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+# Set background color for the main window
+root.configure(bg='lightblue')
 
 # Name entry
-name_label = tk.Label(root, text="Name:")
+name_label = tk.Label(root, text="Name:", bg='lightblue')
 name_label.pack(pady=(10, 0))
 name_entry = tk.Entry(root)
 name_entry.pack(pady=5)
 
 # Password entry
-password_label = tk.Label(root, text="Password:")
+password_label = tk.Label(root, text="Password:", bg='lightblue')
 password_label.pack()
 password_entry = tk.Entry(root, show="*")
 password_entry.pack(pady=(0, 10))
@@ -98,7 +89,7 @@ exit_btn = tk.Button(root, text="Exit", command=exit_program)
 exit_btn.pack(pady=10)
 
 # Countdown label
-label = tk.Label(root, text="")
+label = tk.Label(root, text="", bg='lightblue')
 label.pack()
 
 root.mainloop()
