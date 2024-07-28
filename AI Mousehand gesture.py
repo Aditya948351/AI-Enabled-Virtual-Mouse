@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import pyautogui
+import pyttsx3
 import time
 
 mp_drawing = mp.solutions.drawing_utils
@@ -32,6 +33,12 @@ virtual_mouse_on = True  # Assume virtual mouse is already turned on
 
 # Capture video from webcam
 cap = cv2.VideoCapture(0)
+
+# Speaks a message to indicate that the script will continue running until a key is pressed
+engine = pyttsx3.init()
+text = "Press Esc key to exit the program."
+engine.say(text)
+engine.runAndWait()
 
 while cap.isOpened():
     success, image = cap.read()
@@ -119,12 +126,11 @@ while cap.isOpened():
     # Display the image with hand landmarks
     cv2.imshow('Virtual Mouse', display_image)
 
-    # Add a message to indicate that the script will continue running until a key is pressed
-    print("Press 'Esc' key to exit the program.")
-
     if cv2.waitKey(1) & 0xFF == 27:  # Exit if 'Esc' key is pressed
         break
 
 # Release resources
 cap.release()
 cv2.destroyAllWindows()
+
+
