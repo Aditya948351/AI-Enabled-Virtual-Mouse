@@ -89,7 +89,4 @@ exit_btn = tk.Button(root, text="Exit", command=exit_program)
 exit_btn.pack(pady=10)
 
 # Countdown label
-label = tk.Label(root, text="", bg='lightblue')
-label.pack()
-
-root.mainloop()
+label = tk.Label(ro
